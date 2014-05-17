@@ -1,3 +1,4 @@
+/*
 import lmu.*;
 
 class AmbienceLight extends SensorReading {
@@ -68,3 +69,5 @@ class AmbienceLight extends SensorReading {
   }
   
 }
+
+*/

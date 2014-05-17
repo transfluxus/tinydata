@@ -59,10 +59,10 @@ void broadcastRequest() {
 }
 
 void server_oscEvent(OscMessage msg) {
-  if (msg.addrPattern().equals("/connect")) {
+  String addrPattern = msg.addrPattern();
+  if (addrPattern.equals("/connect")) 
     connect(msg.netAddress().address());
-  } 
-  else if (msg.addrPattern().equals("/data")) {
+  else if (addrPattern.equals("/data")) {
     try {
       println("some data coming");
       SensorReading reading = actualRequest_s.createFromMessage(msg);
@@ -73,8 +73,11 @@ void server_oscEvent(OscMessage msg) {
     catch(Exception exc) {
     }
   }
+  else if (addrPattern.equals("/disconnect")) 
+    disconnect(msg.netAddress().address());
+
   else {
-   msg.print(); 
+    msg.print();
   }
 }
 

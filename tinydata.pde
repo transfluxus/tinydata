@@ -24,7 +24,7 @@ void draw() {
   if (SERVER) 
     server_update();
   else 
-    client_update();  
+    client_update();
 }
 
 void keyPressed() {
@@ -44,5 +44,12 @@ void fillSensorReadings() {
   sensors.put(microphone.name, microphone);
   SensorReading mousePos = new MousePos();
   sensors.put(mousePos.name, mousePos);
+  //  SensorReading ambienceLight = new AmbienceLight();
+  //  sensors.put(ambienceLight.name, ambienceLight);
+}
+
+void exit() {
+  if (!SERVER)
+    sendDisconnect();
 }
 
