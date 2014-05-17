@@ -1,4 +1,3 @@
-
 abstract class SensorReading {
 
   final String name; 
@@ -7,17 +6,27 @@ abstract class SensorReading {
     this.name = name;
   }
 
+  abstract void init();
+
   abstract void execute();
 
   abstract void send();
+
+  abstract void createFromMessage(OscMessage msg);
 }
 
 class MousePos extends SensorReading {
 
+  // temp stuff
+  // final values 
   int x, y;
+
 
   public MousePos() {
     super("mousePos");
+  }
+
+  void init() {
   }
 
   void execute() {
@@ -30,6 +39,9 @@ class MousePos extends SensorReading {
     m.add(x);
     m.add(y);
     oscP5.send(m, serverLocation);
+  }
+
+  void createFromMessage(OscMessage msg) {
   }
 }
 

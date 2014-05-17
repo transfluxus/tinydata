@@ -1,48 +1,57 @@
-import oscP5.*;
-import netP5.*;
-
-
-OscP5 oscP5;
 NetAddressList myNetAddressList = new NetAddressList();
-int broadcastPort = 12000;
-
-NetAddress serverLocation = new NetAddress("192.168.2.132",12000); 
-
 
 /*
 msgs: 
  /connect  -  string:name   
  /dataSend  -  ...
  /sensorRequest  -  
- 
  */
 
 NetAddress myBroadcastLocation; 
+String[] sensorNames;
+
+int timeLastRequest = 0;
+int timeBetweenRequest = 30; // seconds
 
 void setupServer() {
-  oscP5 = new OscP5(this, 12000);
+  oscP5 = new OscP5(this, port);
+ sensorNames=  sensors.keySet().toArray(new String[0]);
+}
+
+void server_update() {
+  if(second() - timeLastRequest > timeBetweenRequest) {
+    processLastRequest();
+    createNewRequest();
+  }
+}
+
+void processLastRequest() {
+  
+}
+
+void createNewRequest() {
+  String sensorName = sensorNames[(int) (random(sensorNames.length))];
+  actualRequest_s = sensors.get(sensorName);
 }
 
 void broadcast() {
-  OscMessage  m = new OscMessage("/broadcast", new Object[]{"Hello"});
+  OscMessage  m = new OscMessage("/broadcast", new Object[] {
+    "Hello"
+  }
+  );
   oscP5.send(m, myNetAddressList);
 }
 
-void oscEvent(OscMessage msg) {
-  /* get and print the address pattern and the typetag of the received OscMessage */
+void server_oscEvent(OscMessage msg) {
   if (msg.addrPattern().equals("/connect")) {
     println(msg.netAddress());
     connect(msg.netAddress().address());
   }
-  else {
-    println("### received an osc message with addrpattern "+msg.addrPattern()+" and typetag "+msg.typetag());
-  }
-  //  msg.print();
 }
 
 private void connect(String theIPaddress) {
-  if (!myNetAddressList.contains(theIPaddress, broadcastPort)) {
-    myNetAddressList.add(new NetAddress(theIPaddress, broadcastPort));
+  if (!myNetAddressList.contains(theIPaddress, port)) {
+    myNetAddressList.add(new NetAddress(theIPaddress, port));
     println("### adding "+theIPaddress+" to the list.");
   } 
   else {
@@ -51,11 +60,9 @@ private void connect(String theIPaddress) {
   println("### currently there are "+myNetAddressList.list().size()+" remote locations connected.");
 }
 
-
-
 private void disconnect(String theIPaddress) {
-  if (myNetAddressList.contains(theIPaddress, broadcastPort)) {
-    myNetAddressList.remove(theIPaddress, broadcastPort);
+  if (myNetAddressList.contains(theIPaddress, port)) {
+    myNetAddressList.remove(theIPaddress, port);
     println("### removing "+theIPaddress+" from the list.");
   } 
   else {
