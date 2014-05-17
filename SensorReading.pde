@@ -2,7 +2,6 @@ abstract class SensorReading {
 
   final String name; 
 
-  boolean done = false;
 
   public SensorReading(String name) {
     this.name = name;
