@@ -8,26 +8,25 @@ abstract class SensorReading {
     this.name = name;
   }
 
-// init is called when the request comes in
+  // init is called when the request comes in
   abstract void init();
 
-// is called in the client.update
+  // is called in the client.update
   abstract void execute();
 
-// is called by send
+  // is called by send
   abstract OscMessage createMessage(String adrPattern);
 
-// should be called in execute
+  // should be called in execute
   abstract void send();
 
-// created by server, when data comes in and by client when results come in
+  // created by server, when data comes in and by client when results come in
   abstract SensorReading createFromMessage(OscMessage msg);
 
-// print results
+  // print results
   abstract void print();
 
   // this was for averaging, but its out
   //  abstract SensorReading createFromList(ArrayList<SensorReading> list);
 }
-
 

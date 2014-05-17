@@ -43,7 +43,7 @@ class MousePos extends SensorReading {
   }
 
   void send() {
-    OscMessage  m = createMessage("/dataSend");
+    OscMessage  m = createMessage("/data");
     oscP5.send(m, serverLocation);
     // this is important
     readingDone = true;

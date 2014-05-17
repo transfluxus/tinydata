@@ -3,7 +3,7 @@ String name="ra";
 SensorReading actualRequest = null;
 SensorReading nextRequest = null;
 
-boolean readingDone=false;
+boolean readingDone=true;
 
 void setupClient() {
   oscP5 = new OscP5(this, port);
@@ -14,13 +14,13 @@ void setupClient() {
 }
 
 void client_update() {
-  if (actualRequest!=null && !readingDone) 
+  if (actualRequest!=null && readingDone) 
     actualRequest.execute();
 }
 
 void client_oscEvent(OscMessage msg) {
   String sensorName = msg.get(0).stringValue();
-  if (msg.addrPattern().equals("/sensorRequest")) {
+  if (msg.addrPattern().equals("/request")) {
     if (readingDone) {
       actualRequest = sensors.get(sensorName);
       actualRequest.done = false;
