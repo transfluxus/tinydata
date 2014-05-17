@@ -44,6 +44,8 @@ void fillSensorReadings() {
   sensors.put(microphone.name, microphone);
   SensorReading mousePos = new MousePos();
   sensors.put(mousePos.name, mousePos);
+  SensorReading space = new Space();
+  sensors.put(space.name, space);
 }
 
 void exit() {
