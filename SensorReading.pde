@@ -15,6 +15,7 @@ abstract class SensorReading {
   abstract void createFromMessage(OscMessage msg);
 }
 
+/*
 class MousePos extends SensorReading {
 
   // temp stuff
@@ -44,4 +45,4 @@ class MousePos extends SensorReading {
   void createFromMessage(OscMessage msg) {
   }
 }
-
+*/

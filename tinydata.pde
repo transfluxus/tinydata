@@ -37,7 +37,10 @@ void oscEvent(OscMessage msg) {
 }
 
 void fillSensorReadings() {
-  SensorReading s = new MousePos();
-  sensors.put(s.name,s);
+  //SensorReading microphone = new Microphone();
+  //sensors.put(microphone.name, microphone);
+  
+  SensorReading ambienceLight = new AmbienceLight();
+  sensors.put(ambienceLight.name, ambienceLight);
 }
 

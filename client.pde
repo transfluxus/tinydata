@@ -1,10 +1,10 @@
 
-String name="ra";
+String name = "ambience";
 
 SensorReading actualRequest = null;
 SensorReading nextRequest = null;
 
-boolean readingDone=false;
+boolean readingDone = false;
 
 void setupClient() {
   oscP5 = new OscP5(this, port);
@@ -15,8 +15,9 @@ void setupClient() {
 }
 
 void client_update() {
-  if (actualRequest!=null) 
+  if (actualRequest!=null) {    
     actualRequest.execute();
+  }
 }
 
 void client_oscEvent(OscMessage msg) {
@@ -25,7 +26,7 @@ void client_oscEvent(OscMessage msg) {
     if (readingDone) 
       actualRequest = sensors.get(sensorName);
     else 
-      nextRequest= sensors.get(sensorName);
+      nextRequest = sensors.get(sensorName);
   }
 }
 
