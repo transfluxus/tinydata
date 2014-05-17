@@ -1,7 +1,9 @@
 import oscP5.*;
 import netP5.*;
+import java.awt.*;
+import java.awt.event.*;
 
-final boolean SERVER = false;
+final boolean SERVER = true;
 
 OscP5 oscP5;
 int port = 12000;
@@ -10,8 +12,6 @@ NetAddress serverLocation = new NetAddress("192.168.2.132", port);
 HashMap<String, SensorReading> sensors = new HashMap<String, SensorReading>();
 
 //Mouse tracking:
-import java.awt.*;
-import java.awt.event.*;
  
  Robot robot;
 
