@@ -6,7 +6,7 @@ SensorReading nextRequest = null;
 boolean readingDone=true;
 
 void setupClient() {
-  oscP5 = new OscP5(this, port);
+   oscP5 = new OscP5(this, port);
   // connect msg
   OscMessage  m = new OscMessage("/connect");
   m.add(name);

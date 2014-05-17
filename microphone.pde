@@ -2,13 +2,12 @@ import ddf.minim.*;
 
 class Microphone extends SensorReading {
   
-  Minim minim;
-  AudioInput microphone;
-
+  AudioInput microphoneInput;
   float amplitude;
   
-  public Microphone() {
+  public Microphone(AudioInput micro) {
     super("microphone");
+    microphoneInput = micro;
   }
   
   void init() {
@@ -16,38 +15,18 @@ class Microphone extends SensorReading {
   }
 
   void execute() {
-    println(name + " execute");
-    
-    amplitude = pickFromBuffer();
+    amplitude = getAmplitude();
     readingDone = true;
     send();
-  }
+  } 
   
-  float pickFromBuffer() {
-    float amplitude =  0.0f;
-    
-    minim = new Minim(this);
-    microphone = minim.getLineIn (Minim.STEREO, 512);
-    
-    if (microphone != null) {
-      amplitude = microphone.mix.level(); 
-      microphone.close();
-    } else {
-      println("Error: no lin-in present: ");
-    }
-    minim.stop();
-    
-    println("       -  " + amplitude);
-    return amplitude;
-  }
-    
   void send() {
     OscMessage m = createMessage("/data");
     oscP5.send(m, serverLocation);
   }
   
   SensorReading createFromMessage(OscMessage msg) {
-    Microphone microphone = new Microphone();
+    Microphone microphone = new Microphone(microphoneInput);
     microphone.amplitude = msg.get(1).floatValue();
     return microphone;
   }
@@ -57,6 +36,17 @@ class Microphone extends SensorReading {
     m.add(name);
     m.add(amplitude);
     return m;
+  }
+  
+  float getAmplitude() {
+    float amplitude =  0.0f;
+    if (microphoneInput != null) {
+      amplitude = microphoneInput.mix.level(); 
+    } else {
+      println("Error: no lin-in present: ");
+    }
+    println("       -  " + amplitude);
+    return amplitude;
   }
   
   void print() {
