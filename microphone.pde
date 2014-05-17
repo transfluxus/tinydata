@@ -7,11 +7,17 @@ class Microphone extends SensorReading {
   }
   
   void init() {
+    println(name + " init");
+    
     amplitude = 0.0f;
   }
 
   void execute() {
+    println(name + " execute");
+    
     amplitude = 1.0f;
+    
+    send();
   }
   
   void send() {
