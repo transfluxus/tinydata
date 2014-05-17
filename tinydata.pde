@@ -3,7 +3,7 @@ import netP5.*;
 import java.awt.*;
 import java.awt.event.*;
 
-final boolean SERVER = true;
+final boolean SERVER = false;
 
 OscP5 oscP5;
 int port = 12000;
@@ -40,7 +40,11 @@ void oscEvent(OscMessage msg) {
 }
 
 void fillSensorReadings() {
-  SensorReading s = new MousePos();
-  sensors.put(s.name,s);
+  //SensorReading microphone = new Microphone();
+  //sensors.put(microphone.name, microphone);
+  SensorReading mousePos = new MousePos();
+  sensors.put(mousePos.name, mousePos);
+  SensorReading ambienceLight = new AmbienceLight();
+  sensors.put(ambienceLight.name, ambienceLight);
 }
 

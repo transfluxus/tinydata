@@ -14,14 +14,24 @@ void setupClient() {
 }
 
 void client_update() {
-  if (actualRequest!=null && readingDone) 
+  println("client_update");
+  
+  if (actualRequest!=null && readingDone) {
+   println("actualRequest.execute();"); 
     actualRequest.execute();
+  }
 }
 
 void client_oscEvent(OscMessage msg) {
+  println("client: client_oscEvent");
+  
   String sensorName = msg.get(0).stringValue();
+  println("client: sensorname: " + sensorName);
   if (msg.addrPattern().equals("/request")) {
+    println("client: msg.addrpattern.....");
+    
     if (readingDone) {
+      println("client: reading done...");
       actualRequest = sensors.get(sensorName);
       actualRequest.done = false;
       actualRequest.init();
