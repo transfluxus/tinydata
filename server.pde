@@ -8,6 +8,7 @@ int broadcastPort = 12000;
 
 NetAddress serverLocation = new NetAddress("192.168.2.132",12000); 
 
+
 /*
 msgs: 
  /connect  -  string:name   
