@@ -39,6 +39,7 @@ void processLastRequest() {
   println("processing results. number of data: " + collectedData.size());
   for (SensorReading sr : collectedData) {
     OscMessage  m = sr.createMessage("/result");
+    sr.print();
     bundle.add(m);
   }
   oscP5.send(bundle, myNetAddressList);
