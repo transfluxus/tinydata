@@ -11,20 +11,8 @@ NetAddress serverLocation = new NetAddress("192.168.2.132", port);
 
 HashMap<String, SensorReading> sensors = new HashMap<String, SensorReading>();
 
-//Mouse tracking:
- 
- Robot robot;
 
 void setup() {
-  //Mouse tracking:
-    try { 
-    robot = new Robot();
-    robot.setAutoDelay(0);
-  } 
-  catch (Exception e) {
-    e.printStackTrace();
-  }
-  
   //Setup server thingies
   fillSensorReadings();
   if (SERVER)
