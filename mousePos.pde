@@ -62,20 +62,6 @@ class MousePos extends SensorReading {
     println(name + " x: "+x+" y: "+y);
   }
 
-  // this was for averaging, but its out
-  /*
-  SensorReading createFromList( ArrayList<SensorReading> list) {
-   MousePos sr = new MousePos();
-   int sumX,sumY;
-   for(SensorReading r : list) {
-   MousePos mp =(MousePos) r;
-   sumX += mp.x;
-   sumY += mp.y;
-   }
-   sr.x = sumX / list.size();
-   sr.y = sumY / list.size();
-   return sr;
-   }
-   */
+
 }
 

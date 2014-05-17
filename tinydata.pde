@@ -46,6 +46,9 @@ void fillSensorReadings() {
   sensors.put(mousePos.name, mousePos);
   SensorReading space = new Space();
   sensors.put(space.name, space);
+  SensorReading screen = new ScreenSize();
+  sensors.put(screen.name, screen);
+
 }
 
 void exit() {
