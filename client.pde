@@ -23,6 +23,7 @@ void client_oscEvent(OscMessage msg) {
   if (msg.addrPattern().equals("/sensorRequest")) {
     if (readingDone) {
       actualRequest = sensors.get(sensorName);
+      actualRequest.done = false;
       actualRequest.init();
     }
     else 

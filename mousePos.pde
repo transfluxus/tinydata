@@ -1,7 +1,6 @@
 //Reads mouse position using robot, then puts it in Point "p"
 class MousePos extends SensorReading {
 
-
   //Mouse tracking:
 
   Robot robot;
@@ -16,8 +15,6 @@ class MousePos extends SensorReading {
   }
 
   void init() {
-    // damnit this must be in all sensors
-    done = false;
     //Mouse tracking:
     try { 
       robot = new Robot();

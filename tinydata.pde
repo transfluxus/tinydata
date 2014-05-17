@@ -11,7 +11,6 @@ NetAddress serverLocation = new NetAddress("192.168.2.132", port);
 
 HashMap<String, SensorReading> sensors = new HashMap<String, SensorReading>();
 
-
 void setup() {
   //Setup server thingies
   fillSensorReadings();
