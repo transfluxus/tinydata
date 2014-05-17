@@ -6,7 +6,7 @@ msgs:
  /request  - string:sensorName 
  /data  -  string:sensorName 
  /result -string:sensorName, ....
- */
+*/
 
 NetAddress myBroadcastLocation; 
 String[] sensorNames;
