@@ -1,10 +1,8 @@
-
 class ScreenSize extends SensorReading {
 
   // temp stuff
   // final values 
   int width, height;
-
 
   public MousePos() {
     super("screenSize");

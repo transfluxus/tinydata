@@ -48,7 +48,6 @@ void fillSensorReadings() {
   sensors.put(space.name, space);
   SensorReading screen = new ScreenSize();
   sensors.put(screen.name, screen);
-
 }
 
 void exit() {
