@@ -38,7 +38,7 @@ void processLastRequest() {
   OscBundle bundle = new OscBundle();
   println("processing results. number of data: " + collectedData.size());
   for (SensorReading sr : collectedData) {
-    OscMessage  m = new OscMessage("/result");
+    OscMessage  m = sr.createMessage("/result");
     bundle.add(m);
   }
   oscP5.send(bundle, myNetAddressList);
@@ -85,6 +85,11 @@ void connect(String theIPaddress) {
   if (!myNetAddressList.contains(theIPaddress, port)) {
     myNetAddressList.add(new NetAddress(theIPaddress, port));
     println("### adding "+theIPaddress+" to the list.");
+    // quick request:
+    OscMessage  m = new OscMessage("/request");
+    m.add(actSensorName);
+    oscP5.send(m, new NetAddress(theIPaddress, port));
+    //
   } 
   else {
     println("### "+theIPaddress+" is already connected.");

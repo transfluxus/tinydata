@@ -36,7 +36,7 @@ void oscEvent(OscMessage msg) {
     server_oscEvent(msg);
   else 
     client_oscEvent(msg);
-  println("### received an osc message with addrpattern "+msg.addrPattern()+" and typetag "+msg.typetag());
+  //  println("### received an osc message with addrpattern "+msg.addrPattern()+" and typetag "+msg.typetag());
 }
 
 void fillSensorReadings() {
