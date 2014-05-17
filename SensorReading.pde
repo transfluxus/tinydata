@@ -90,5 +90,3 @@ class MousePos extends SensorReading {
    return sr;
    }
    */
-}
-*/

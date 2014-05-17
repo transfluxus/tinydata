@@ -1,3 +1,4 @@
+/*
 class Microphone extends SensorReading {
   
   float amplitude;
@@ -27,3 +28,4 @@ class Microphone extends SensorReading {
   }
   
 }
+*/
