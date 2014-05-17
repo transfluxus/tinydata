@@ -21,8 +21,10 @@ void client_update() {
 void client_oscEvent(OscMessage msg) {
   String sensorName = msg.get(0).stringValue();
   if (msg.addrPattern().equals("/sensorRequest")) {
-    if (readingDone) 
+    if (readingDone) {
       actualRequest = sensors.get(sensorName);
+      actualRequest.init();
+    }
     else 
       nextRequest= sensors.get(sensorName);
   }
