@@ -13,8 +13,6 @@ class AmbienceLight extends SensorReading {
   }
   
   void init() {
-    
-    // initial sensor values
     int[] lmu_start = LmuTracker.getLMUArray();
     lmu_left  = lmu_start[0];
     lmu_right = lmu_start[1];
@@ -27,7 +25,6 @@ class AmbienceLight extends SensorReading {
     
     println(name + " executing");
     
-    // get current sensor values
     int[] vals = LmuTracker.getLMUArray();
     int li = (int)(vals[0] * multi);
     int re = (int)(vals[1] * multi);
