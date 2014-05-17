@@ -14,7 +14,6 @@ void setupClient() {
 }
 
 void client_update() {
-  println("client_update");  
   if (actualRequest!=null && !readingDone) {
    println("actualRequest.execute();"); 
     actualRequest.execute();
