@@ -26,8 +26,7 @@ class MousePos extends SensorReading {
   }
 
   void execute() {
-    
-    println("mosePos execute");
+    println(name + " execute");
     
     PointerInfo pointerInfo = MouseInfo.getPointerInfo();
     Point p = pointerInfo.getLocation();
@@ -46,9 +45,6 @@ class MousePos extends SensorReading {
   }
 
   void send() {
-    
-    println("mosePos send");
-    
     OscMessage  m = createMessage("/data");
     oscP5.send(m, serverLocation);
     // this is important
@@ -63,7 +59,7 @@ class MousePos extends SensorReading {
   }
 
   void print() {
-    println("x: "+x+" y: "+y);
+    println(name + " x: "+x+" y: "+y);
   }
 
   // this was for averaging, but its out

@@ -7,8 +7,6 @@ class Microphone extends SensorReading {
   }
   
   void init() {
-    println(name + " init");
-    
     amplitude = 0.0f;
   }
 
@@ -16,15 +14,12 @@ class Microphone extends SensorReading {
     println(name + " execute");
     
     amplitude = 1.0f;
-    
+    readingDone = true;
     send();
   }
   
   void send() {
-    println(name + " send");
-    
-    OscMessage  m = new OscMessage("/data");
-    m.add(amplitude);
+    OscMessage m = createMessage("/data");
     oscP5.send(m, serverLocation);
   }
   
@@ -35,14 +30,14 @@ class Microphone extends SensorReading {
   }
   
   OscMessage createMessage(String adrPattern) {
-    OscMessage  m = new OscMessage(adrPattern);
+    OscMessage m = new OscMessage(adrPattern);
     m.add(name);
     m.add(amplitude);
     return m;
   }
   
   void print() {
-    println("amplitude: " + amplitude);
+    println(name + " amplitude: " + amplitude);
   }
 }
 
