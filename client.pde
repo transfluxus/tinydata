@@ -14,8 +14,7 @@ void setupClient() {
 }
 
 void client_update() {
-  println("client_update");
-  
+  println("client_update");  
   if (actualRequest!=null && !readingDone) {
    println("actualRequest.execute();"); 
     actualRequest.execute();
@@ -46,3 +45,7 @@ void client_oscEvent(OscMessage msg) {
   }
 }
 
+void sendDisconnect() {
+  OscMessage  m = new OscMessage("/disconnect");
+  oscP5.send(m, serverLocation);  
+}
