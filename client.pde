@@ -16,7 +16,7 @@ void setupClient() {
 void client_update() {
   println("client_update");
   
-  if (actualRequest!=null && readingDone) {
+  if (actualRequest!=null && !readingDone) {
    println("actualRequest.execute();"); 
     actualRequest.execute();
   }
@@ -33,7 +33,7 @@ void client_oscEvent(OscMessage msg) {
     if (readingDone) {
       println("client: reading done...");
       actualRequest = sensors.get(sensorName);
-      actualRequest.done = false;
+      readingDone = false;
       actualRequest.init();
     }
     else 

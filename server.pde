@@ -73,6 +73,9 @@ void server_oscEvent(OscMessage msg) {
     catch(Exception exc) {
     }
   }
+  else {
+   msg.print(); 
+  }
 }
 
 void connect(String theIPaddress) {
