@@ -3,7 +3,7 @@ import netP5.*;
 import java.awt.*;
 import java.awt.event.*;
 
-final boolean SERVER = false;
+final boolean SERVER = true;
 
 OscP5 oscP5;
 int port = 12000;

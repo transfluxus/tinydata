@@ -23,7 +23,7 @@ class Microphone extends SensorReading {
   void send() {
     println(name + " send");
     
-    OscMessage  m = new OscMessage("/data-" + name);
+    OscMessage  m = new OscMessage("/data");
     m.add(amplitude);
     oscP5.send(m, serverLocation);
   }
