@@ -1,4 +1,3 @@
-
 String name="ra";
 
 SensorReading actualRequest = null;
@@ -15,17 +14,22 @@ void setupClient() {
 }
 
 void client_update() {
-  if (actualRequest!=null) 
+  if (actualRequest!=null && !readingDone) 
     actualRequest.execute();
 }
 
 void client_oscEvent(OscMessage msg) {
+  String sensorName = msg.get(0).stringValue();
   if (msg.addrPattern().equals("/sensorRequest")) {
-    String sensorName = msg.get(0).stringValue();
     if (readingDone) 
       actualRequest = sensors.get(sensorName);
     else 
       nextRequest= sensors.get(sensorName);
+  }
+  else if (msg.addrPattern().equals("/result")) {
+    SensorReading sr =  sensors.get(sensorName);
+    sr.createFromMessage(msg);
+    sr.print();
   }
 }
 

@@ -1,7 +1,7 @@
 import oscP5.*;
 import netP5.*;
 
-final boolean SERVER = false;
+final boolean SERVER = true;
 
 OscP5 oscP5;
 int port = 12000;
