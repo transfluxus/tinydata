@@ -1,3 +1,4 @@
+import ddf.minim.*;
 import oscP5.*;
 import netP5.*;
 import java.awt.*;

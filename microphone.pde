@@ -1,5 +1,3 @@
-import ddf.minim.*;
-
 class Microphone extends SensorReading {
   
   AudioInput microphoneInput;
