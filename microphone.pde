@@ -3,7 +3,7 @@ import ddf.minim.*;
 class Microphone extends SensorReading {
   
   Minim minim;
-  AudioInput in;
+  AudioInput microphone;
 
   float amplitude;
   
@@ -12,10 +12,6 @@ class Microphone extends SensorReading {
   }
   
   void init() {
-    minim = new Minim(this);
-    minim.debugOn();
-    in = minim.getLineIn(Minim.MONO, 512);
-    
     amplitude = 0.0f;
   }
 
@@ -28,17 +24,20 @@ class Microphone extends SensorReading {
   }
   
   float pickFromBuffer() {
+    float amplitude =  0.0f;
     
-    float amplitude = in.left.get(0); 
+    minim = new Minim(this);
+    microphone = minim.getLineIn (Minim.STEREO, 512);
     
-    for(int i = 0; i < in.bufferSize() - 1; i++) {
-      //amplitude += in.left.get(i);
-      println("       -  " + in.left.get(i));
+    if (microphone != null) {
+      amplitude = microphone.mix.level(); 
+      microphone.close();
+    } else {
+      println("Error: no lin-in present: ");
     }
-    //amplitude /= in.bufferSize();
+    minim.stop();
     
-    println("       -  " + amplitude + " @ " + in.bufferSize());
-    
+    println("       -  " + amplitude);
     return amplitude;
   }
     
