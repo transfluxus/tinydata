@@ -31,7 +31,7 @@ void processLastRequest() {
 
 void createNewRequest() {
   String sensorName = sensorNames[(int) (random(sensorNames.length))];
-  actualRequest_s = sensors.get(sensorName);
+//  actualRequest_s = sensors.get(sensorName);
 }
 
 void broadcast() {
