@@ -4,7 +4,7 @@ class ScreenSize extends SensorReading {
   // final values 
   int width, height;
 
-  public MousePos() {
+  public ScreenSize() {
     super("screenSize");
   }
 
@@ -41,7 +41,7 @@ class ScreenSize extends SensorReading {
   }
 
   void print() {
-    println(name + " width: "+x+" height: "+y);
+    println(name + " width: "+this.width+" height: "+this.height);
   }
 }
 

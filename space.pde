@@ -1,6 +1,5 @@
 import java.text.NumberFormat;
 
-
 class Space extends SensorReading {
 
   // final values 
