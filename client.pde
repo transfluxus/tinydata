@@ -32,8 +32,7 @@ void client_oscEvent(OscMessage msg) {
     }
   }
   else if (msg.addrPattern().equals("/result")) {
-    SensorReading sr =  sensors.get(sensorName);
-    sr.createFromMessage(msg);
+    SensorReading sr =  sr.createFromMessage(msg);
     sr.print();
   }
 }
