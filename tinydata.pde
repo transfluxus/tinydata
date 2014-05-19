@@ -12,16 +12,14 @@ NetAddress serverLocation = new NetAddress("192.168.2.132", port);
 
 HashMap<String, SensorReading> sensors = new HashMap<String, SensorReading>();
 
-Minim minim;
-AudioInput microphoneInput;
 
 void setup() {
-  
+
   if (!SERVER) {
     minim = new Minim(this);
     microphoneInput = minim.getLineIn (Minim.STEREO, 512);
   }
-  
+
   //Setup server thingies
   fillSensorReadings();
   if (SERVER)
@@ -50,14 +48,14 @@ void oscEvent(OscMessage msg) {
 }
 
 void fillSensorReadings() {
-  SensorReading microphone = new Microphone(microphoneInput);
-  sensors.put(microphone.name, microphone);
-  SensorReading mousePos = new MousePos();
-  sensors.put(mousePos.name, mousePos);
-  SensorReading space = new Space();
-  sensors.put(space.name, space);
-  SensorReading screen = new ScreenSize();
-  sensors.put(screen.name, screen);
+  addSensor(new Microphone(microphoneInput));
+  addSensor(new MousePos());
+  addSensor(new Space());
+  addSensor(new ScreenSize());
+}
+
+void addSensor(SensorReading sr) {
+  sensors.put(sr.name, sr);
 }
 
 void exit() {

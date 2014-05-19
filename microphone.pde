@@ -1,3 +1,6 @@
+Minim minim;
+AudioInput microphoneInput;
+
 class Microphone extends SensorReading {
 
   AudioInput microphoneInput;
